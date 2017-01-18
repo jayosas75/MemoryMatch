@@ -1,0 +1,239 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!--<script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>-->
+</head>
+<body>
+
+<header><img src="images/Football Helmet Grey.png" height="256" width="256"/>
+    NFL Team Logo Matching Game
+    <ul id="headerLinks">
+        <li><a href="#">Settings</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+</header>
+
+<div id="statsContainer">
+    <div class="games-played">
+        <p class="label">Games Played: </p>
+        <p class="value"></p>
+    </div>
+    <div class="attempts">
+        <p class="label">Attempts: </p>
+        <p class="value"></p>
+    </div>
+    <div class="accuracy">
+        <p class="label">Accuracy: </p>
+        <p class="value"></p>
+    </div>
+    <br>
+    <br>
+
+    <button class="reset">Reset Game</button>
+
+    <div class='stats_image'>
+        <img src="images/american-football-character-funny.png" height="178" width="178"/>
+    </div>
+</div>
+
+<div id="game-area">
+    <!--  <div class="card">
+          <div class="front">
+              <img src="images/dolphins.png"/></div>
+          <div class="back">
+              <img src="images/BackofCard.png"/></div>
+      </div>-->
+
+    <div class="card">
+        <div class="front">
+            <img src="images/packers.jpg" height="654" width="736"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>
+
+    <!-- <div class="card">
+         <div class="front">
+             <img src="images/panthers.jpg" height="600" width="800"/></div>
+         <div class="back">
+             <img src="images/BackofCard.png"/></div>
+     </div>-->
+
+    <div class="card">
+        <div class="front">
+            <img src="images/niners.jpg" height="177" width="284"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>
+
+    <!--<div class="card">
+        <div class="front">
+            <img src="images/eagles.jpg" height="1200" width="1600"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>-->
+
+    <!--<div class="card">
+        <div class="front">
+            <img src="images/dolphins.png"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>-->
+
+    <!-- <div class="card">
+         <div class="front">
+             <img src="images/patriots.jpg" height="354" width="236"/></div>
+         <div class="back">
+             <img src="images/BackofCard.png"/></div>
+     </div>-->
+
+    <!-- <div class="card">
+         <div class="front">
+             <img src="images/steelers.jpg" height="1200" width="1600"/></div>
+         <div class="back">
+             <img src="images/BackofCard.png"/></div>
+     </div>-->
+
+    <!--<div class="card">
+        <div class="front">
+            <img src="images/titans.jpg"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>-->
+
+    <!--  <div class="card">
+          <div class="front">
+              <img src="images/titans.jpg"/></div>
+          <div class="back">
+              <img src="images/BackofCard.png"/></div>
+      </div>-->
+
+    <!-- <div class="card">
+         <div class="front">
+             <img src="images/eagles.jpg" height="1200" width="1600"/></div>
+         <div class="back">
+             <img src="images/BackofCard.png"/></div>
+     </div>-->
+
+    <!--<div class="card">
+        <div class="front">
+            <img src="images/buccs.jpg" height="720" width="809"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>-->
+
+    <!--  <div class="card">
+          <div class="front">
+              <img src="images/panthers.jpg" height="600" width="800"/></div>
+          <div class="back">
+              <img src="images/BackofCard.png"/></div>
+      </div>-->
+
+    <!-- <div class="card">
+         <div class="front">
+             <img src="images/patriots.jpg" height="354" width="236"/></div>
+         <div class="back">
+             <img src="images/BackofCard.png"/></div>
+     </div>-->
+
+    <!--  <div class="card">
+          <div class="front">
+              <img src="images/steelers.jpg" height="1200" width="1600"/></div>
+          <div class="back">
+              <img src="images/BackofCard.png"/></div>
+      </div>-->
+
+    <div class="card">
+        <div class="front">
+            <img src="images/packers.jpg" height="654" width="736"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>
+
+    <div class="card">
+        <div class="front">
+            <img src="images/niners.jpg" height="177" width="284"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>
+
+    <!--<div class="card">
+        <div class="front">
+            <img src="images/buccs.jpg" height="720" width="809"/></div>
+        <div class="back">
+            <img src="images/BackofCard.png"/></div>
+    </div>-->
+</div>
+
+<script>
+    // scope instructions
+    $(document).ready(initialize_game);
+    function initialize_game() {
+        console.log('initialize_game called');
+        $('.card').click(card_clicked);
+    }
+    var first_card_clicked = null;
+    var second_card_clicked = null;
+    var total_possible_matches = 2;
+    var match_counter = 0;
+    var accept_click = true;
+
+    function card_clicked() {
+        if (accept_click) {
+            console.log('card_clicked called', this);
+            var back_element = $(this).find('.back');
+            back_element.hide();
+            if (first_card_clicked == null) {
+                first_card_clicked = $(this);
+                return;
+            } else {
+                second_card_clicked = $(this);
+                double_click_sameCard_fix();
+            }
+            if (first_card_clicked.find('.front img').attr('src') == second_card_clicked.find('.front img').attr('src')) {
+                cards_matched();
+                if (match_counter == total_possible_matches) {
+                    all_cards_matched();
+                } else {
+                    return;
+                }
+            } else {
+                accept_click = false;
+                setTimeout(flip_back, 1200);
+            }
+        }
+
+    }
+    function flip_back(){
+        $(first_card_clicked).find('.back').show();
+        $(second_card_clicked).find('.back').show();
+        first_card_clicked = null;
+        second_card_clicked = null;
+        console.log('first and second card do not match');
+        accept_click = true;
+
+    }
+    function cards_matched(){
+        all_cards_off = false;
+        match_counter = match_counter += 1;
+        first_card_clicked = null;
+        second_card_clicked = null;
+    }
+    function all_cards_matched(){
+        console.log('You win');
+        //put you win message in document
+        $('#game-area').addClass('game_over').text('Touchdown You Win!!');
+    }
+    function double_click_sameCard_fix() {
+        if (first_card_clicked[0] == second_card_clicked[0]) {
+            second_card_clicked = null;
+            return;
+        }
+    }
+</script>
+
+
+</body>
+</html>
