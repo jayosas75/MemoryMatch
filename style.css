@@ -1,0 +1,99 @@
+body {
+    background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/10/Desktop-Football-Field-Backgrounds.jpeg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    color: white;
+    font-size: 11vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    text-align: center;
+    height: 11vh;
+}
+
+#headerLinks {
+    color: white;
+    display: inline-block;
+    list-style-type: none;
+    font-size: 4vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    float: right;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+
+
+a {
+    color: white;
+}
+
+header > img {
+    height: 13vh;
+    width: 13vw;
+}
+
+.reset {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 5vh;
+    margin-left: 4vw;
+    font-family: "Berlin Sans FB", 'sans-serif';
+}
+
+#statsContainer {
+    width: 20.2vw;
+    height: 75vh;
+    margin-top: 3vh;
+    float: left;
+    color: white;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    border: 1vh solid black;
+}
+
+.label {
+    font-size: 5vh;
+    margin-left: 5px;
+}
+
+#game-area {
+    width: 76vw;
+    float: right;
+    height: 75vh;
+    margin-top: 2vh;
+}
+
+.card {
+    height: 28vh;
+    width: 150px;
+    margin-right: 5.5vh;
+    display: inline-block;
+}
+
+.card img {
+    position: absolute;
+    height: 28vh;
+    width: 150px;
+}
+
+.back {
+    /*display: none;*/
+    height: 28vh;
+    width: 150px;
+}
+
+.game_over {
+    color: white;
+    font-size: 32vh;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30vh;
+}
+
+.stats_image > img {
+    margin-left: 4.5vw;
+}
