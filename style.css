@@ -2,13 +2,15 @@ body {
     background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/10/Desktop-Football-Field-Backgrounds.jpeg");
     background-position: center;
     background-size: cover;
+    height: 100vh;
+    margin-top: 0;
 }
 
 header {
     width: 100%;
     color: white;
-    font-size: 11vh;
-    font-family: "Berlin Sans FB";
+    font-size: 8vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
     text-align: center;
 }
 
@@ -17,7 +19,13 @@ header {
     display: inline-block;
     list-style-type: none;
     font-size: 4vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    float: right;
+    margin-bottom: 0;
+    vertical-align: top;
 }
+
+
 
 a {
     color: white;
@@ -31,48 +39,70 @@ header > img {
 .reset {
     background-color: black;
     color: white;
-    font-size: 24px;
+    text-align: center;
+    font-size: 5vh;
+    margin-left: 4vw;
+    font-family: "Berlin Sans FB", 'sans-serif';
 }
 
 #statsContainer {
     width: 20.2vw;
-    height: 60vh;
-    margin-top: 2px;
+    height: 82vh;
+    margin-top: 3vh;
     float: left;
     color: white;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    border: 1vh solid black;
 }
 
 .label {
     font-size: 5vh;
-    margin-left: 5px;
+    margin-bottom: 0;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 1vh;
 }
 
-.reset {
-    margin-left: 6vw;
+.value {
+    font-size: 3vh;
+    text-align: center;
+    font-weight: bold;
 }
 
 #game-area {
-    width: 77.5vw;
+    width: 76vw;
     float: right;
     height: 75vh;
-    margin-top: 2px;
+    margin-top: 2vh;
 }
 
 .card {
-    height: 200px;
+    height: 28vh;
     width: 150px;
-    margin-right: 45px;
+    margin-right: 5.5vh;
     display: inline-block;
 }
 
 .card img {
     position: absolute;
-    height: 200px;
+    height: 28vh;
     width: 150px;
 }
 
 .back {
     /*display: none;*/
-    height: 200px;
+    height: 28vh;
     width: 150px;
+}
+
+/*.game_over {
+    color: white;
+    font-size: 32vh;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30vh;
+}*/
+
+.stats_image > img {
+    margin-left: 4.5vw;
 }
