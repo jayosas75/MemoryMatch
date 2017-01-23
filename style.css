@@ -1,5 +1,5 @@
 body {
-    background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/10/Desktop-Football-Field-Backgrounds.jpeg");
+    background-image: url("http://wallpapercave.com/wp/gzHsjEt.jpg");
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -8,37 +8,30 @@ body {
 
 header {
     width: 100%;
-    color: white;
+    color: saddlebrown;
     font-size: 8vh;
     font-family: "Berlin Sans FB", 'sans-serif';
     text-align: center;
 }
 
 #headerLinks {
-    color: white;
-    display: inline-block;
     list-style-type: none;
     font-size: 4vh;
     font-family: "Berlin Sans FB", 'sans-serif';
-    float: right;
-    margin-bottom: 0;
-    vertical-align: top;
+    display: inline-flex;
 }
 
-
-
+li {
+    margin: 1vh;
+}
 a {
     color: white;
-}
 
-header > img {
-    height: 13vh;
-    width: 13vw;
 }
 
 .reset {
     background-color: black;
-    color: white;
+    color: saddlebrown;
     text-align: center;
     font-size: 5vh;
     margin-left: 4vw;
@@ -47,11 +40,19 @@ header > img {
 
 #statsContainer {
     width: 20.2vw;
-    height: 82vh;
-    margin-top: 3vh;
     float: left;
-    color: white;
+    color: saddlebrown;
     font-family: "Berlin Sans FB", 'sans-serif';
+    border: 1vh solid black;
+}
+
+.rulesArea {
+    width: 18vw;
+    margin-left: 4vh;
+    float: left;
+    height: 61vh;
+    color: saddlebrown;
+    font-family: 'Berlin Sans FB', 'sans-serif';
     border: 1vh solid black;
 }
 
@@ -62,6 +63,21 @@ header > img {
     text-align: center;
     margin-top: 1vh;
 }
+#accuracy_value, .saddleBrownText {
+    color: saddlebrown;
+}
+
+#rulesHeader {
+    font-size: 5vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    text-align: center;
+    text-decoration: underline;
+}
+
+.rules {
+    text-align: center;
+    font-size: 3vh;
+}
 
 .value {
     font-size: 3vh;
@@ -70,39 +86,42 @@ header > img {
 }
 
 #game-area {
-    width: 76vw;
-    float: right;
-    height: 75vh;
-    margin-top: 2vh;
+    width: 49vw;
+    float: left;
+    border: 1vh solid black;
+    margin-left: 4vh;
+    padding: 1vh;
 }
 
 .card {
-    height: 28vh;
-    width: 150px;
-    margin-right: 5.5vh;
+    height: 25vh;
+    width: 8vw;
     display: inline-block;
+    border: 1px solid saddlebrown;
+}
+
+.back {
+    height: 25vh;
+    width: 8vw;
 }
 
 .card img {
     position: absolute;
-    height: 28vh;
-    width: 150px;
+    height: 25vh;
+    width: 8vw;
 }
-
-.back {
-    /*display: none;*/
-    height: 28vh;
-    width: 150px;
-}
-
-/*.game_over {
-    color: white;
-    font-size: 32vh;
-    font-weight: bold;
-    text-align: center;
-    line-height: 30vh;
-}*/
 
 .stats_image > img {
     margin-left: 4.5vw;
 }
+
+.youWin_img>img {
+    width: 50vw;
+}
+
+.flipped {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+
