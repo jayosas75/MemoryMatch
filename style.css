@@ -1,0 +1,127 @@
+body {
+    background-image: url("http://wallpapercave.com/wp/gzHsjEt.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    margin-top: 0;
+}
+
+header {
+    width: 100%;
+    color: saddlebrown;
+    font-size: 8vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    text-align: center;
+}
+
+#headerLinks {
+    list-style-type: none;
+    font-size: 4vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    display: inline-flex;
+}
+
+li {
+    margin: 1vh;
+}
+a {
+    color: white;
+
+}
+
+.reset {
+    background-color: black;
+    color: saddlebrown;
+    text-align: center;
+    font-size: 5vh;
+    margin-left: 4vw;
+    font-family: "Berlin Sans FB", 'sans-serif';
+}
+
+#statsContainer {
+    width: 20.2vw;
+    float: left;
+    color: saddlebrown;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    border: 1vh solid black;
+}
+
+.rulesArea {
+    width: 18vw;
+    margin-left: 4vh;
+    float: left;
+    height: 61vh;
+    color: saddlebrown;
+    font-family: 'Berlin Sans FB', 'sans-serif';
+    border: 1vh solid black;
+}
+
+.label {
+    font-size: 5vh;
+    margin-bottom: 0;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 1vh;
+}
+#accuracy_value, .saddleBrownText {
+    color: saddlebrown;
+}
+
+#rulesHeader {
+    font-size: 5vh;
+    font-family: "Berlin Sans FB", 'sans-serif';
+    text-align: center;
+    text-decoration: underline;
+}
+
+.rules {
+    text-align: center;
+    font-size: 3vh;
+}
+
+.value {
+    font-size: 3vh;
+    text-align: center;
+    font-weight: bold;
+}
+
+#game-area {
+    width: 49vw;
+    float: left;
+    border: 1vh solid black;
+    margin-left: 4vh;
+    padding: 1vh;
+}
+
+.card {
+    height: 25vh;
+    width: 8vw;
+    display: inline-block;
+    border: 1px solid saddlebrown;
+}
+
+.back {
+    height: 25vh;
+    width: 8vw;
+}
+
+.card img {
+    position: absolute;
+    height: 25vh;
+    width: 8vw;
+}
+
+.stats_image > img {
+    margin-left: 4.5vw;
+}
+
+.youWin_img>img {
+    width: 50vw;
+}
+
+.flipped {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+
