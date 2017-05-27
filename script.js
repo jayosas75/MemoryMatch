@@ -96,6 +96,8 @@ function reset_stats(){
     attempts = 0;
     match_counter = 0;
     sack_counter = 0;
+    width_progress_bar = 11;
+    $('#progressBar').width('1%');
     display_stats();
 }
 function reset_cards(){
@@ -122,7 +124,6 @@ function randomize_cards() {
 }
 
 function increment_progressbar() {
-    debugger;
     let percentage = width_progress_bar + '%';
     $(".meter > span").each(function() {
         $(this)
