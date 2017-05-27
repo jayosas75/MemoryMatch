@@ -1,7 +1,7 @@
 $(document).ready(initialize_game);
 function initialize_game() {
     randomize_cards();
-    $('.youWin_img, #fumble, #loseMessage').hide();
+    $('.youWin_img, #fumble, .message').hide();
     $('.card').click(card_clicked);
     $('.reset').click(function(){
         reset_cards();
@@ -17,6 +17,7 @@ let match_counter = 0;
 let attempts = 0;
 let games_played = 0;
 let sack_counter = 0;
+let width_progress_bar = 11;
 
 function card_clicked() {
     if (accept_click) {
@@ -50,7 +51,6 @@ function flip_back(){
     $(second_card_clicked).find('.back').show();
     first_card_clicked = null;
     second_card_clicked = null;
-    console.log('first and second card do not match');
     accept_click = true;
     if(sack_counter === 5){
         $('#game-area').hide();
@@ -65,15 +65,16 @@ function cards_matched(){
     first_card_clicked = null;
     second_card_clicked = null;
     accept_click = true;
+    sack_counter = 0;
+    increment_progressbar();
     display_stats();
+    width_progress_bar += 10;
 }
 function all_cards_matched(){
-    console.log('You win');
-    games_played++;
     $('.card').hide();
     $('.card').find('.front').hide();
     $('.card').find('.back').hide();
-    $('.youWin_img').show();
+    $('.youWin_img, #winMessage').show();
 }
 function double_click_sameCard_fix() {
     if (first_card_clicked[0] == second_card_clicked[0]) {
@@ -98,9 +99,8 @@ function reset_stats(){
     display_stats();
 }
 function reset_cards(){
-    debugger;
     $('.card').removeClass('flipped');
-    $('.youWin_img, #fumble').hide();
+    $('.youWin_img, #fumble, .message').hide();
     $('#game-area').show();
     $('.card').show();
     $('.card').find('.back').show();
@@ -119,4 +119,16 @@ function randomize_cards() {
         let random = arr.splice(random_number, 1);
         $("#game-area").append(random[0]);
     }
+}
+
+function increment_progressbar() {
+    debugger;
+    let percentage = width_progress_bar + '%';
+    $(".meter > span").each(function() {
+        $(this)
+            .width(percentage)
+            .animate({
+                width: width_progress_bar + '%'
+            }, 1200);
+    });
 }
