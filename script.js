@@ -1,9 +1,7 @@
 $(document).ready(initialize_game);
 function initialize_game() {
     randomize_cards();
-    $('.youWin_img').hide();
-    $('#fumble').hide();
-    console.log('initialize_game called');
+    $('.youWin_img, #fumble, #loseMessage').hide();
     $('.card').click(card_clicked);
     $('.reset').click(function(){
         reset_cards();
@@ -56,7 +54,7 @@ function flip_back(){
     accept_click = true;
     if(sack_counter === 5){
         $('#game-area').hide();
-        $('#fumble').show();
+        $('#fumble, #loseMessage').show();
     }
 
 }
