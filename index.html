@@ -5,40 +5,30 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width" />
     <!--<script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>-->
 </head>
 <body>
 
 <header>
     NFL Team Logo Matching Game
-    <ul id="headerLinks">
-        <li><a href="#">Settings</a></li>
-        <li><a href="about.html">About</a></li>
-    </ul>
+    <a href="about.html">About</a>
 </header>
 
 <div id="statsContainer">
-    <div class="games-played">
         <p class="label">Games Played</p>
-        <p class="value" id="games_played_value"></p>
-    </div>
-    <div class="attempts">
+        <p class="value" id="games_played_value">0</p>
         <p class="label">Attempts</p>
-        <p class="value" id="attempts_value"></p>
-    </div>
-    <div class="accuracy">
+        <p class="value" id="attempts_value">0</p>
         <p class="label saddleBrownText">Accuracy</p>
         <p class="value" id="accuracy_value"></p>
-    </div>
+        <p class="label saddleBrownText">Sacks</p>
+        <p class="value" id="sacks_value"></p>
+
     <button class="reset">Reset Game</button>
-    <br>
-    <div class='stats_image'>
-        <img src="images/american-football-character-funny.png" height="178" width="178"/>
-    </div>
 </div>
 
 <div id="game-area">
-
     <div class="youWin_img">
         <img src="images/success_baby.jpg"/>
     </div>
@@ -170,15 +160,16 @@
             <img src="images/BackofCard.png"/></div>
     </div>
 </div>
-<!-- I wanted to do a whole thing where these rules are implemented into the program but wasn't able to find the time to
-do that at this time. I will add more effects and much more code to make these rules actually do something but as for now
-they mean nothing. -jy -->
+<div id="fumble">
+    <img src="images/fumble.jpg" alt="">
+</div>
+
 <div class="rulesArea">
     <p class="saddleBrownText" id="rulesHeader">Rules:</p>
     <p class="rules">*You start at the 1 yard line.*</p>
     <p class="rules">1. In this game you have 5 downs</p>
     <p class="rules">2. 1 Mis-match equals a sack</p>
-    <p class="rules">3. 5 Sacks means you lose</p>
+    <p class="rules">3. 5 Sacks in a row means you fumble and lose</p>
     <p class="rules">4. Each match counts for an 11 yard gain and new set of downs</p>
     <p class="rules">5. 9 Matches wins the game.</p>
 </div>
