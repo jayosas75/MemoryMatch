@@ -1,59 +1,41 @@
 body {
-    background-image: url("http://wallpapercave.com/wp/gzHsjEt.jpg");
+    background-image: url('images/background.png');
     background-position: center;
     background-size: cover;
-    height: 100vh;
-    margin-top: 0;
+    margin: 0;
+    font-size: 0;
 }
 
 header {
     width: 100%;
-    color: saddlebrown;
+    color: goldenrod;
     font-size: 8vh;
     font-family: "Berlin Sans FB", 'sans-serif';
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#headerLinks {
-    list-style-type: none;
+a {
     font-size: 4vh;
     font-family: "Berlin Sans FB", 'sans-serif';
     display: inline-flex;
-}
-
-li {
-    margin: 1vh;
-}
-a {
     color: white;
-
 }
 
 .reset {
-    background-color: black;
-    color: saddlebrown;
+    background-color: white;
+    color: goldenrod;
     text-align: center;
     font-size: 5vh;
-    margin-left: 4vw;
+    margin-left: 75px;
     font-family: "Berlin Sans FB", 'sans-serif';
 }
 
 #statsContainer {
-    width: 20.2vw;
+    width: 340px;
     float: left;
-    color: saddlebrown;
+    color: goldenrod;
     font-family: "Berlin Sans FB", 'sans-serif';
-    border: 1vh solid black;
-}
-
-.rulesArea {
-    width: 18vw;
-    margin-left: 4vh;
-    float: left;
-    height: 61vh;
-    color: saddlebrown;
-    font-family: 'Berlin Sans FB', 'sans-serif';
-    border: 1vh solid black;
 }
 
 .label {
@@ -64,7 +46,7 @@ a {
     margin-top: 1vh;
 }
 #accuracy_value, .saddleBrownText {
-    color: saddlebrown;
+    color: goldenrod;
 }
 
 #rulesHeader {
@@ -85,38 +67,37 @@ a {
     font-weight: bold;
 }
 
-#game-area {
+#game-area, #fumble {
     width: 49vw;
     float: left;
-    border: 1vh solid black;
     margin-left: 4vh;
     padding: 1vh;
 }
 
-.card {
-    height: 25vh;
-    width: 8vw;
-    display: inline-block;
-    border: 1px solid saddlebrown;
+#fumble > img {
+    width: 100%;
 }
 
-.back {
-    height: 25vh;
-    width: 8vw;
+.message {
+    font-size: 30px;
+    color: white;
+}
+
+.card {
+    display: inline-block;
+    height: 190px;
+    width: 120px;
+    border: 1px solid goldenrod;
 }
 
 .card img {
     position: absolute;
-    height: 25vh;
-    width: 8vw;
-}
-
-.stats_image > img {
-    margin-left: 4.5vw;
+    height: 190px;
+    width: 120px;
 }
 
 .youWin_img>img {
-    width: 50vw;
+    width: 100%;
 }
 
 .flipped {
@@ -124,4 +105,157 @@ a {
     opacity: 0;
     transition: visibility 0s 1s, opacity 1s linear;
 }
+
+.meter {
+    height: 20px;
+    position: relative;
+    background: #555;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    clear: both;
+    padding: 10px;
+    box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+}
+
+.meter > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(43,194,83);
+    background-image: linear-gradient(45deg, rgb(43,194,83) 37%, rgb(84,240,84) 69%);
+    box-shadow:
+            inset 0 2px 9px  rgba(255,255,255,0.3),
+            inset 0 -2px 6px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.meter > span:after, .animate > span > span {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image:
+            -webkit-gradient(linear, 0 0, 100% 100%,
+            color-stop(.25, rgba(255, 255, 255, .2)),
+            color-stop(.25, transparent), color-stop(.5, transparent),
+            color-stop(.5, rgba(255, 255, 255, .2)),
+            color-stop(.75, rgba(255, 255, 255, .2)),
+            color-stop(.75, transparent), to(transparent)
+            );
+    background-image:
+            -moz-linear-gradient(
+                    -45deg,
+                    rgba(255, 255, 255, .2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, .2) 50%,
+                    rgba(255, 255, 255, .2) 75%,
+                    transparent 75%,
+                    transparent
+            );
+    z-index: 1;
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    -webkit-animation: move 2s linear infinite;
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+
+.animate > span:after {
+    display: none;
+}
+
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+.meter > span:after, .animate > span > span {
+    animation: move 2s linear infinite;
+}
+
+@keyframes expandWidth {
+    0% { width: 0; }
+    100% { width: auto; }
+}
+
+#rulesArea {
+    width: 18vw;
+    margin-left: 4vh;
+    float: left;
+    color: goldenrod;
+    font-family: 'Berlin Sans FB', 'sans-serif';
+}
+
+.container {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+
+h1  {
+    font-size: 50px;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: upper-roman;
+}
+
+@media only screen and (max-width: 590px) {
+    #statsContainer {
+        width: 100%;
+        margin-left: 15px;
+    }
+    #game-area {
+        width: 100%;
+        margin-left: 30px
+    }
+    #rulesArea {
+        width: 100%;
+        margin-left: 20px;
+    }
+    .label, .value {
+        font-size: 20px,
+    }
+    .reset {
+        margin-left: 115px;
+    }
+    .animate {
+        width: 100%;
+        margin-left: 10px;
+    }
+    a {
+        margin-left: 25px;
+    }
+
+    #fumble > img {
+        width: 375px;
+    }
+
+    .youWin_img > img {
+        margin-right: 30px;
+    }
+}
+
+
 
