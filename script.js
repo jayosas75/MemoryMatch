@@ -1,30 +1,27 @@
 $(document).ready(initialize_game);
 function initialize_game() {
     randomize_cards();
-    $('.youWin_img').hide();
-    console.log('initialize_game called');
+    $('.youWin_img, #fumble, .message').hide();
     $('.card').click(card_clicked);
     $('.reset').click(function(){
         reset_cards();
         reset_stats();
         randomize_cards();
     });
-
 }
-var first_card_clicked = null;
-var second_card_clicked = null;
-var total_possible_matches = 9;
-var match_counter = 0;
-var accept_click = true;
-var matches = 0;
-var attempts = 0;
-var accuracy = 0;
-var games_played = 0;
+let accept_click = true;
+let first_card_clicked = null;
+let second_card_clicked = null;
+let total_possible_matches = 9;
+let match_counter = 0;
+let attempts = 0;
+let games_played = 0;
+let sack_counter = 0;
+let width_progress_bar = 11;
 
 function card_clicked() {
     if (accept_click) {
-        console.log('card_clicked called', this);
-        var back_element = $(this).find('.back');
+        let back_element = $(this).find('.back');
         back_element.hide();
         if (first_card_clicked == null) {
             first_card_clicked = $(this);
@@ -32,6 +29,7 @@ function card_clicked() {
         } else {
             second_card_clicked = $(this);
             attempts++;
+            sack_counter++;
             double_click_sameCard_fix();
         }
         if (first_card_clicked.find('.front img').attr('src') == second_card_clicked.find('.front img').attr('src')) {
@@ -53,31 +51,34 @@ function flip_back(){
     $(second_card_clicked).find('.back').show();
     first_card_clicked = null;
     second_card_clicked = null;
-    console.log('first and second card do not match');
     accept_click = true;
+    if(sack_counter === 5){
+        $('#game-area').hide();
+        $('#fumble, #loseMessage').show();
+    }
 
 }
 function cards_matched(){
     first_card_clicked.addClass('flipped');
     second_card_clicked.addClass('flipped');
     match_counter++;
-    matches++;
     first_card_clicked = null;
     second_card_clicked = null;
     accept_click = true;
+    sack_counter = 0;
+    increment_progressbar();
     display_stats();
+    width_progress_bar += 10;
 }
 function all_cards_matched(){
-    console.log('You win');
     $('.card').hide();
     $('.card').find('.front').hide();
     $('.card').find('.back').hide();
-    $('.youWin_img').show();
+    $('.youWin_img, #winMessage').show();
 }
 function double_click_sameCard_fix() {
     if (first_card_clicked[0] == second_card_clicked[0]) {
         second_card_clicked = null;
-        return;
     }
 }
 function display_stats(){
@@ -88,17 +89,21 @@ function display_stats(){
     $('#games_played_value').text(games_played);
     $('#accuracy_value').text(accuracy_formatted);
     $('#attempts_value').text(attempts);
+    $('#sacks_value').text(sack_counter);
 }
 function reset_stats(){
     accuracy = 0;
-    matches = 0;
     attempts = 0;
     match_counter = 0;
+    sack_counter = 0;
+    width_progress_bar = 11;
+    $('#progressBar').width('1%');
     display_stats();
 }
 function reset_cards(){
     $('.card').removeClass('flipped');
-    $('.youWin_img').hide();
+    $('.youWin_img, #fumble, .message').hide();
+    $('#game-area').show();
     $('.card').show();
     $('.card').find('.back').show();
     $('.card').find('.front').show();
@@ -109,11 +114,22 @@ function reset_cards(){
 }
 
 function randomize_cards() {
-    var arr = Array.prototype.slice.call(document.getElementsByClassName("card"));
+    let arr = Array.prototype.slice.call(document.getElementsByClassName("card"));
 
     while (arr.length > 0) {
-        var random_number = Math.floor(Math.random() * arr.length);
-        var random = arr.splice(random_number, 1);
+        let random_number = Math.floor(Math.random() * arr.length);
+        let random = arr.splice(random_number, 1);
         $("#game-area").append(random[0]);
     }
+}
+
+function increment_progressbar() {
+    let percentage = width_progress_bar + '%';
+    $(".meter > span").each(function() {
+        $(this)
+            .width(percentage)
+            .animate({
+                width: width_progress_bar + '%'
+            }, 1200);
+    });
 }
