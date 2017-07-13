@@ -1,11 +1,11 @@
 $(document).ready(initialize_game);
 
 function initialize_game() {
+    reset_cards();
     randomize_cards();
     $('.youWin_img, #fumble, .message').hide();
     $('.card').click(card_clicked);
     $('.reset').click(function(){
-        reset_cards();
         reset_stats();
         randomize_cards();
     });
