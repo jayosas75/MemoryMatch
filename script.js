@@ -1,4 +1,5 @@
 $(document).ready(initialize_game);
+
 function initialize_game() {
     randomize_cards();
     $('.youWin_img, #fumble, .message').hide();
@@ -9,6 +10,8 @@ function initialize_game() {
         randomize_cards();
     });
 }
+
+/*Global Variables to keep track of the game*/
 let accept_click = true;
 let first_card_clicked = null;
 let second_card_clicked = null;
@@ -19,6 +22,8 @@ let games_played = 0;
 let sack_counter = 0;
 let width_progress_bar = 11;
 
+/*If no card has been clicked for a couple seconds this function will run each time a card is clicked, it will
+also look to see if the 2 cards selected are matched*/
 function card_clicked() {
     if (accept_click) {
         let back_element = $(this).find('.back');
@@ -46,6 +51,8 @@ function card_clicked() {
     }
     display_stats();
 }
+
+/*If the two cards selected are not a matching combination they will flip back over and add a "sack" to sack display*/
 function flip_back(){
     $(first_card_clicked).find('.back').show();
     $(second_card_clicked).find('.back').show();
@@ -56,8 +63,9 @@ function flip_back(){
         $('#game-area').hide();
         $('#fumble, #loseMessage').show();
     }
-
 }
+
+/*If cards matched then both will disapear from game board and progress bar will update 10%*/
 function cards_matched(){
     first_card_clicked.addClass('flipped');
     second_card_clicked.addClass('flipped');
@@ -70,17 +78,23 @@ function cards_matched(){
     display_stats();
     width_progress_bar += 10;
 }
+
+/*Will run when all 9 pairs have been found and display win message*/
 function all_cards_matched(){
     $('.card').hide();
     $('.card').find('.front').hide();
     $('.card').find('.back').hide();
     $('.youWin_img, #winMessage').show();
 }
+
+/*Fix if the same card has been clicked twice, would have registered as a match but now it will not.*/
 function double_click_sameCard_fix() {
     if (first_card_clicked[0] == second_card_clicked[0]) {
         second_card_clicked = null;
     }
 }
+
+/*Displays stats onto stats container on the left side of the screen*/
 function display_stats(){
     accuracy = (match_counter / attempts);
     accuracy = accuracy * 100;
@@ -91,6 +105,8 @@ function display_stats(){
     $('#attempts_value').text(attempts);
     $('#sacks_value').text(sack_counter);
 }
+
+/*Functions to reset stats and cards, changes DOM and resets globals*/
 function reset_stats(){
     accuracy = 0;
     attempts = 0;
@@ -100,6 +116,7 @@ function reset_stats(){
     $('#progressBar').width('1%');
     display_stats();
 }
+
 function reset_cards(){
     $('.card').removeClass('flipped');
     $('.youWin_img, #fumble, .message').hide();
@@ -113,9 +130,9 @@ function reset_cards(){
     second_card_clicked = null;
 }
 
+/*Function to randomize the cards that way each game is not the same*/
 function randomize_cards() {
     let arr = Array.prototype.slice.call(document.getElementsByClassName("card"));
-
     while (arr.length > 0) {
         let random_number = Math.floor(Math.random() * arr.length);
         let random = arr.splice(random_number, 1);
@@ -123,6 +140,7 @@ function randomize_cards() {
     }
 }
 
+/*Increases progress bar at bottom of screen and gives it a animation*/
 function increment_progressbar() {
     let percentage = width_progress_bar + '%';
     $(".meter > span").each(function() {
