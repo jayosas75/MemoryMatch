@@ -8,6 +8,7 @@ function initialize_game() {
     $('.reset').click(function(){
         reset_stats();
         randomize_cards();
+        reset_cards();
     });
 }
 
