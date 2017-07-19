@@ -20,6 +20,7 @@ a {
     font-family: "Berlin Sans FB", 'sans-serif';
     display: inline-flex;
     color: white;
+    text-decoration: underline;
 }
 
 .reset {
